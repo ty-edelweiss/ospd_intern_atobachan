@@ -42,6 +42,7 @@ use Cake\Routing\Route\DashedRoute;
  *
  */
 Router::defaultRouteClass(DashedRoute::class);
+Router::extensions(['json', 'xml']);
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
@@ -50,11 +51,40 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/test', ['controller' => 'Pages', 'action' => 'display', 'test']);
+    $routes->connect('/token', ['controller' => 'Pages', 'action' => 'display', 'token']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+    /**
+     * Connect catchall routes for all controllers.
+     *
+     * Using the argument `DashedRoute`, the `fallbacks` method is a shortcut for
+     *    `$routes->connect('/:controller', ['action' => 'index'], ['routeClass' => 'DashedRoute']);`
+     *    `$routes->connect('/:controller/:action/*', [], ['routeClass' => 'DashedRoute']);`
+     *
+     * Any route class can be used with this method, such as:
+     * - DashedRoute
+     * - InflectedRoute
+     * - Route
+     * - Or your own route class
+     *
+     * You can remove these routes once you've connected the
+     * routes you want in your application.
+     */
+    $routes->fallbacks(DashedRoute::class);
+});
+
+Router::prefix('api', function (RouteBuilder $routes) {
+
+    $routes->connect('/twitter', ['controller' => 'Twitter', 'action' => 'index']);
+
+    $routes->connect('/token', ['controller' => 'Token', 'action' => 'index']);
+
+    $routes->connect('/follow', ['controller' => 'Follow', 'action' => 'index']);
 
     /**
      * Connect catchall routes for all controllers.

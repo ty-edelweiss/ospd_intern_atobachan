@@ -1,20 +1,12 @@
-# User specific & automatically generated files #
-#################################################
-/build
-/dist
-/tags
-/composer.lock
-/phpunit.xml
-/phpcs.xml
-/vendor
-*.mo
-debug.log
-error.log
-
-# IDE and editor specific files #
-#################################
-/nbproject
-.idea
+# CakePHP specific files #
+##########################
+/config/app.php
+/config/twitter.php
+/config/.env
+/tmp/*
+/logs/*
+/tmp/*
+/vendor/*
 
 # OS generated files #
 ######################
@@ -26,3 +18,20 @@ error.log
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Tool specific files #
+#######################
+*~ # vim
+*.swp # vim
+*.swo # vim
+*.sublime-* # sublime text
+*.tmlanguage.cache # sublime text & textmate
+*.tmPreferences.cache # sublime text & textmate
+*.stTheme.cache # cache files for sublime text
+.settings/* # Eclipse
+.editorconfig
+.idea/
+.travis.yml
+nbproject/* # NetBeans
+.vscode # Visual Studio Code
+.sass-cache/ # Sass preprocessor
