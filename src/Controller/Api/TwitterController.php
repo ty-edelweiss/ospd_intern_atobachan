@@ -37,7 +37,7 @@ class TwitterController extends AppController
         $session->write('Oauth.token', $request_token['oauth_token']);
         $session->write('Oauth.secret', $request_token['oauth_token_secret']);
 
-        $response = $connection->url("oauth/authenticate", [ "oauth_token" => $request_token['oauth_token'] ]);
+        $response = $connection->url('oauth/authenticate', [ 'oauth_token' => $request_token['oauth_token'] ]);
 
         $this->viewBuilder()->setClassName('Json');
         $this->set(compact('response'));

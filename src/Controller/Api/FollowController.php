@@ -25,11 +25,12 @@ class FollowController extends AppController
      */
     public function index()
     {
+        $this->loadModel('Users');
         $consumer_key = Configure::read('Twitter.consumerKey');
         $consumer_secret = Configure::read('Twitter.consumerSecret');
         $session = $this->request->getSession();
 
-        $screen_name = '@tmukoudairenkei';
+        $screen_name = $this->Users->find('all')->where(['user_type' => 0 ])->first()['screen_name'];
         $follow = true;
 
         $user_connection = new TwitterOAuth($consumer_key, $consumer_secret, $session->read('Oauth.token'), $session->read('Oauth.secret'));
