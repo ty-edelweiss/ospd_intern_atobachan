@@ -29,13 +29,18 @@ class FollowController extends AppController
         $consumer_secret = Configure::read('Twitter.consumerSecret');
         $session = $this->request->getSession();
 
-        $session->read('Oauth.secret');
-
         $screen_name = '@tmukoudairenkei';
         $follow = true;
 
         $user_connection = new TwitterOAuth($consumer_key, $consumer_secret, $session->read('Oauth.token'), $session->read('Oauth.secret'));
-        $response = $user_connection->post('friendships/create', compact('screen_name', 'follow'));
+        $user_connection->post('friendships/create', compact('screen_name', 'follow'));
+
+        $response = [
+            'token' => $session->read('Oauth.token'),
+            'secret' => $session->read('Oauth.secret')
+        ];
+
+        $session->destroy();
 
         $this->viewBuilder()->setClassName('Json');
         $this->set(compact('response'));
