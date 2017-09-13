@@ -1,5 +1,5 @@
 <?php
-class UserregisterController extends AppController
+class UsersController extends AppController
 {
     public function view($id)
     {
