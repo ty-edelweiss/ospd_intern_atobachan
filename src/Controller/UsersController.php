@@ -1,8 +1,14 @@
 <?php
+namespace App\Controller;
+
 class UsersController extends AppController
 {
-    public function view($id)
+    public $name = 'Users';
+    public function index()
     {
-        // アクションの処理をここで行います。
+        $users= $this->Users->find();
+        $this->set(compact('users'));
+        $this->render();
+        
     }
 }
