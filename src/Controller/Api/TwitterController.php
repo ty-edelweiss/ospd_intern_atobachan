@@ -37,22 +37,11 @@ class TwitterController extends AppController
         $session->write('Oauth.token', $request_token['oauth_token']);
         $session->write('Oauth.secret', $request_token['oauth_token_secret']);
 
-        $url = $connection->url("oauth/authenticate", [ "oauth_token" => $request_token['oauth_token'] ]);
+        $response = $connection->url("oauth/authenticate", [ "oauth_token" => $request_token['oauth_token'] ]);
 
-        $test = $url;
-
-        $format = mb_strtolower($this->request->getQuery('format'));
-        $formats = [
-            'xml' => 'Xml',
-            'json' => 'Json'
-        ];
-        if (!isset($formats[$format])) {
-            throw new NotFoundException(__('Unknown format.'));
-        }
-
-        $this->viewBuilder()->setClassName($formats[$format]);
-        $this->set(compact('test'));
-        $this->set('_serialize', ['test']);
+        $this->viewBuilder()->setClassName('Json');
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
     }
 
 }
