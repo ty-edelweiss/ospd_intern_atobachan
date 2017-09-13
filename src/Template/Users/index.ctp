@@ -1,8 +1,5 @@
 <?php 
-// echo $this->Form->create($article,['type' => 'text']);
-// $this->Form->end(); 
-echo $this->Html->link('edit',[
-    'action' => 'edit']);
-?>
-<?php
-    // echo $this->Form->create($userid);
+echo $this->Form->create('User', ['type'=>'post']);
+echo $this->Form->text('username');
+echo $this->Form->submit('送信');
+echo $this->Form->end();
