@@ -50,7 +50,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="columns">
         <h4>twitter api test</h4>
         <?php
-        $url = 'http://localhost:8082/api/twitter/?format=json';
+        $url = 'http://localhost:8082/api/twitter';
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -58,7 +58,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         $res = curl_exec($ch);
         $data = json_decode($res);
         ?>
-        <a href="<?= $data->test ?>">
+        <a href="<?= $data->response ?>">
             test
         </a>
     </div>

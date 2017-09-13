@@ -53,6 +53,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $routes->connect('/test', ['controller' => 'Pages', 'action' => 'display', 'test']);
     $routes->connect('/token', ['controller' => 'Pages', 'action' => 'display', 'token']);
+    $routes->connect('/users', ['controller' => 'Pages', 'action' => 'display', 'users']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -80,9 +81,12 @@ Router::scope('/', function (RouteBuilder $routes) {
 
 Router::prefix('api', function (RouteBuilder $routes) {
 
+    $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+
     $routes->connect('/twitter', ['controller' => 'Twitter', 'action' => 'index']);
 
     $routes->connect('/token', ['controller' => 'Token', 'action' => 'index']);
+    $routes->connect('/token/create', ['controller' => 'Token', 'action' => 'create']);
 
     $routes->connect('/follow', ['controller' => 'Follow', 'action' => 'index']);
 
