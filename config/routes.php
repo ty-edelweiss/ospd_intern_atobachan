@@ -86,6 +86,8 @@ Router::prefix('api', function (RouteBuilder $routes) {
 
     $routes->connect('/follow', ['controller' => 'Follow', 'action' => 'index']);
 
+    $routes->connect('/mail', ['controller' => 'Mail', 'action' => 'index']);
+
     /**
      * Connect catchall routes for all controllers.
      *
