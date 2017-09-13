@@ -52,12 +52,12 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->integer('userid')
-            ->allowEmpty('userid');
+            ->scalar('screen_name')
+            ->allowEmpty('screen_name');
 
         $validator
-            ->scalar('username')
-            ->allowEmpty('username');
+            ->email('email')
+            ->allowEmpty('email');
 
         $validator
             ->scalar('access_token')
@@ -83,7 +83,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->isUnique(['email']));
 
         return $rules;
     }

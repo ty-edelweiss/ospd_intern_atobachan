@@ -7,8 +7,8 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
- * @property int $userid
- * @property string $username
+ * @property string $screen_name
+ * @property string $email
  * @property string $access_token
  * @property string $access_token_se
  * @property int $user_type

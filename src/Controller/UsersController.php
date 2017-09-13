@@ -7,16 +7,26 @@ class UsersController extends AppController
     public function index()
     {
         /*set*/
-        $username = $this->request->data['username'];
-        $ent = $this->Users->newEntity($this->request->data);
-        $this->Users->save($ent);
-        $this->set(array(
-            'username'=>$username));
+        if ($this->request->is('post')) {
+            $screen_name = $this->request->data['screen_name'];
+            // $email = $this->request->data['email'];
+            $access_token = $this->request->data['access_token'];
+            $access_token_se = $this->request->data['access_token_se'];
+            $user_type = $this->request->data['user_type'];
+            $ent = $this->Users->newEntity();
+            $ent = $this->Users->patchEntity($ent, array(
+                'screen_name'=>$screen_name,
+                // 'email'=>$email,
+                'access_token'=>$access_token,
+                'access_token_se'=>$access_token_se,
+                'user_type'=>$user_type
+                ));
+            $this->Users->save($ent);
+        }
         
         /*get*/
         // $users= $this->Users->find();
         // $this->set(compact('users'));
-
         
         
     }
