@@ -25,9 +25,13 @@ class MailController extends AppController
      */
     public function index()
     {
+        $this->loadModel('Users');
         $email = new Email('default');
-
-        $target = $this->request->getQuery('email');
+        $user = $this->Users->find('all')
+            ->where(['user_type'=>0])
+            ->first();
+        // $target = $this->request->getQuery('email');
+            $target = $user['email'];
         $email->setTransport('gmail')
             ->setFrom([ 'you@localhost' => '@obachan' ])
             ->setTo($target)
@@ -35,8 +39,11 @@ class MailController extends AppController
             ->setTemplate('welcome');
 
         $stats = 'success';
+        if(!isset($target)){
+            $target = '';
+        }
         try {
-            $email->send('My Message Test');
+            $email->send('ao-app://?token='.$user['access_token']);
         } catch (Exception $e) {
             $stats = 'fail';
         }
