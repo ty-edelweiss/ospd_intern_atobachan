@@ -7,11 +7,11 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
- * @property string $screen_name
+ * @property string $young_screen_name
+ * @property string $old_screen_name
  * @property string $email
  * @property string $access_token
  * @property string $access_token_se
- * @property int $user_type
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
