@@ -53,7 +53,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $routes->connect('/test', ['controller' => 'Pages', 'action' => 'display', 'test']);
     $routes->connect('/token', ['controller' => 'Pages', 'action' => 'display', 'token']);
-    $routes->connect('/users', ['controller' => 'Pages', 'action' => 'display', 'users']);
+    $routes->connect('/users', ['controller' => 'Pages', 'action' => 'display', '20170913055452Users']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -81,7 +81,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
 Router::prefix('api', function (RouteBuilder $routes) {
 
-    $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/users', ['controller' => '20170913055452Users', 'action' => 'index']);
 
     $routes->connect('/twitter', ['controller' => 'Twitter', 'action' => 'index']);
 
@@ -91,6 +91,8 @@ Router::prefix('api', function (RouteBuilder $routes) {
     $routes->connect('/follow', ['controller' => 'Follow', 'action' => 'index']);
 
     $routes->connect('/mail', ['controller' => 'Mail', 'action' => 'index']);
+
+    $routes->connect('/deep', ['controller' => 'Deep', 'action' => 'index']);
 
     /**
      * Connect catchall routes for all controllers.

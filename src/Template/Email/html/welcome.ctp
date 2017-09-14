@@ -17,5 +17,5 @@ $prefix = 'あなたのお孫さんから@おばあちゃんへの登録が申�
 $suffix = '何かあればこちらにご連絡下さい -> xxxx-xxxx-xxxx';
 
 echo $this->Text->autoParagraph($prefix);
-echo $this->Text->autoLink($content);
+echo $this->Text->autoLink('https://atobachan-team2ospd.c9users.io/api/deep/?deep_link=' . $content);
 echo $this->Text->autoParagraph($suffix);

@@ -17,5 +17,5 @@ $prefix = 'あなたのお孫さんから@おばあちゃんへの登録が申�
 $suffix = '何かあればこちらにご連絡下さい -> xxxx-xxxx-xxxx';
 
 echo $prefix . "\n";
-echo $content . "\n";
+echo 'https://atobachan-team2ospd.c9users.io/api/deep/?deep_link=' . $content . "\n";
 echo $suffix;

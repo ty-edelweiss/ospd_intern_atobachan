@@ -35,7 +35,7 @@ class TokenController extends AppController
 
         $response = [
             'token' => $oauth['access_token'],
-            'secret' => $oauth['access_token_secret']
+            'secret' => $oauth['access_token_se']
         ];
 
         $this->viewBuilder()->setClassName('Json');
