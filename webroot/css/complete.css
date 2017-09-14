@@ -1,11 +1,58 @@
-@font-face {
-    font-family: 'cakefont';
-    src: url('../font/cakedingbats-webfont.eot');
-    src: url('../font/cakedingbats-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../font/cakedingbats-webfont.woff2') format('woff2'),
-    url('../font/cakedingbats-webfont.woff') format('woff'),
-    url('../font/cakedingbats-webfont.ttf') format('truetype'),
-    url('../font/cakedingbats-webfont.svg#cake_dingbatsregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+div#app {
+    height: 100%;
+    width: 100%;
+}
+
+div.header {
+    margin: 0 auto 25%;
+    padding: 10px 0;
+    width: 100%;
+    background-color: rgba(65, 134, 107, 1.0);
+    font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, 'ms pgothic', sans-serif;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+    div.header {
+        margin: 0 auto 60%;
+    }
+}
+
+div.header > h1 {
+    color: rgba(255, 255, 255, 1.0);
+    font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, 'ms pgothic', sans-serif;
+    font-weight: bold;
+}
+
+div.contents {
+    margin: auto;
+    width: 80%;
+}
+
+div.notification-success {
+    border: 1px solid rgba(0, 0, 128, 1.0);
+    border-radius: 5px;
+    color: rgba(0, 0, 128, 1.0);
+    background-color: rgba(0, 0, 128, 0.2);
+}
+
+div.notification-fail {
+    border: 1px solid rgba(128, 0, 0, 1.0);
+    border-radius: 5px;
+    color: rgba(128, 0, 0, 1.0);
+    background-color: rgba(128, 0, 0, 0.2);
+}
+
+div.notification > p.success-head, div.notification > p.fail-head {
+    font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, 'ms pgothic', sans-serif;
+    padding-top: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.notification > p.success-body, div.notification > p.fail-body {
+    font-family: helvetica, arial, 'hiragino kaku gothic pro', meiryo, 'ms pgothic', sans-serif;
+    font-size: 10px;
+    text-align: center;
 }

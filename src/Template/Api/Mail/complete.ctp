@@ -27,14 +27,28 @@ $siteDescription = '@おばあちゃん |　高齢者をつなぐSNS'
     </title>
 
     <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('complete.css') ?>
     <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
 </head>
-<body class="home">
+<body>
 
-<div class="row">
-    <div class="columns large-12">
-        <h4>Registering to @Obachan <?= $stats ?>!</h4>
+<div id="app">
+    <div class="header">
+        <h1 class="brand">@おばあちゃん</h1>
+    </div>
+    <div class="contents">
+        <div class="notification <?= $stats == 'success' ? 'notification-success' : 'notification-fail' ?>">
+            <?php
+            if ($stats == 'success') {
+                echo '<p class="success-head">Twitterとの連携を完了しました</p>';
+                echo '<p class="success-body">右上のDoneを押してこのページを閉じて下さい</p>';
+            } else {
+                echo '<p class="fail-head">Twitterと連携に失敗しました</p>';
+                echo '<p class="fail-body">サーバ混雑のため時間を置いてアクセスして下さい</p>';
+            }
+            ?>
+        </div>
     </div>
 </div>
 
