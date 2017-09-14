@@ -5,7 +5,6 @@ class Users extends AbstractMigration
 {
     public function up()
     {
-
         $this->table('users')
             ->addColumn('young_screen_name', 'string', [
                 'default' => null,

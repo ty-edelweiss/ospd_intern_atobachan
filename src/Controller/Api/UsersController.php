@@ -9,11 +9,12 @@ class UsersController extends AppController
     {
         $this->loadModel('Users');
         if ($this->request->is('post')) {
-            //$screen_name = $this->request->getData('screen_name');
-            //$email = $this->request->getData('email');
-            $young_screen_name = $this->request->getQuery('young_screen_name');
-            $old_screen_name = $this->request->getQuery('old_screen_name');
-            $email = $this->request->getQuery('email');
+            $young_screen_name = $this->request->getData('young_screen_name');
+            $old_screen_name = $this->request->getData('old_screen_name');
+            $email = $this->request->getData('email');
+            //$young_screen_name = $this->request->getQuery('young_screen_name');
+            //$old_screen_name = $this->request->getQuery('old_screen_name');
+            //$email = $this->request->getQuery('email');
 
             $entity = $this->Users->newEntity();
             $entity = $this->Users->patchEntity($entity, [
