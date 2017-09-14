@@ -43,7 +43,7 @@ class MailController extends AppController
             $target = '';
         }
         try {
-            $email->send('ao-app://?token='.$user['access_token']);
+            $email->send('ao-app://?'.$user['access_token']);
         } catch (Exception $e) {
             $stats = 'fail';
         }
