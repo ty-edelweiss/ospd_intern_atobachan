@@ -30,7 +30,7 @@ class TokenController extends AppController
         $consumer_secret = Configure::read('Twitter.consumerSecret');
 
         $oauth = $this->Users->find('all')
-            ->where('user_type', '=', '0')
+            ->where([ 'old_screen_name' => $this->request->getQuery('screen_name') ])
             ->first('access_token', 'access_token_se');
 
         $response = [
@@ -55,7 +55,11 @@ class TokenController extends AppController
         $session->write('Oauth.token', $access_token['oauth_token']);
         $session->write('Oauth.secret', $access_token['oauth_token_secret']);
 
-        $entity = $this->Users->find('all')->where(['user_type' => 0 ])->first();
+        $user_connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+        $response = $user_connection->get("account/verify_credentials")->screen_name;
+
+        /*
+        $entity = $this->Users->find('all')->where([ 'young_screen_name' => $screen_name ])->first();
         $entity = $this->Users->patchEntity($entity, [
             'access_token' => $access_token['oauth_token'],
             'access_token_se' => $access_token['oauth_token_secret']
@@ -70,6 +74,11 @@ class TokenController extends AppController
         return $this->redirect(
             ['controller' => 'Follow', 'action' => 'index']
         );
+        */
+
+        $this->ViewBuilder()->setClassName('Json');
+        $this->set(compact('response'));
+        $this->set('_serialize', ['response']);
     }
 
 }
