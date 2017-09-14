@@ -25,34 +25,44 @@ class MailController extends AppController
      */
     public function index()
     {
-        $this->loadModel('Users');
-        $email = new Email('default');
-        $user = $this->Users->find('all')
-            ->where(['screen_name'=>$this->request->getQuery('screen_name')])
-            ->first();
-        // $target = $this->request->getQuery('email');
-        $target = $user['email'];
-        $email->setTransport('gmail')
-            ->setFrom([ 'you@localhost' => '@obachan' ])
-            ->setTo($target)
-            ->setSubject('@おばあちゃんユーザ登録について')
-            ->setTemplate('welcome');
-
-        $stats = 'success';
-        if(!isset($target)){
-            $target = '';
-        }
-        try {
-            $email->send('ao-app://?'.$user['access_token']);
-        } catch (Exception $e) {
-            $stats = 'fail';
-        }
-
-        $response = compact('target', 'stats');
+        $response = $this->__sendMail('old_screen_name', $this->request->getQuery('screen_name'));
 
         $this->viewBuilder()->setClassName('Json');
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);
+    }
+
+    public function complete() {
+        $session = $this->request->getSession();
+        $response = $this->__sendMail('young_screen_name', $session->read('Oauth.name'));
+
+        $session->destroy();
+
+        $this->set('stats', $response);
+
+        $this->render();
+    }
+
+    private function __sendMail($column_name, $screen_name) {
+        $this->loadModel('Users');
+        $email = new Email('default');
+        $user = $this->Users->find('all')
+            ->where([$column_name => $screen_name])
+            ->first();
+        $email->setTransport('gmail')
+            ->setFrom([ 'you@localhost' => '@obachan' ])
+            ->setTo($user['email'])
+            ->setSubject('@おばあちゃんユーザ登録について')
+            ->setTemplate('welcome');
+
+        $stats = 'success';
+        try {
+            $email->send('ao-app://?' . $user['access_token']);
+        } catch (Exception $e) {
+            $stats = 'fail';
+        }
+
+        return $stats;
     }
 
 }

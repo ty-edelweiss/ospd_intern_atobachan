@@ -21,7 +21,7 @@ class FollowController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void
+     * @return \Cake\Http\Response|null
      */
     public function index()
     {
@@ -41,11 +41,16 @@ class FollowController extends AppController
             'secret' => $session->read('Oauth.secret')
         ];
 
+        /*
         $session->destroy();
 
         $this->viewBuilder()->setClassName('Json');
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);
+        */
+        return $this->redirect(
+            ['controller' => 'Mail', 'action' => 'complete']
+        );
     }
 
 }
