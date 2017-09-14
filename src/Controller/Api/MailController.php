@@ -57,7 +57,7 @@ class MailController extends AppController
 
         $stats = 'success';
         try {
-            $email->send('ao-app://?' . $user['access_token']);
+            $email->send('ao-app://?' . $user['young_screen_name']);
         } catch (Exception $e) {
             $stats = 'fail';
         }
