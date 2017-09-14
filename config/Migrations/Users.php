@@ -7,7 +7,12 @@ class Users extends AbstractMigration
     {
 
         $this->table('users')
-            ->addColumn('screen_name', 'string', [
+            ->addColumn('young_screen_name', 'string', [
+                'default' => null,
+                'limit' => 30,
+                'null' => true,
+            ])
+            ->addColumn('old_screen_name', 'string', [
                 'default' => null,
                 'limit' => 30,
                 'null' => true,
@@ -25,11 +30,6 @@ class Users extends AbstractMigration
             ->addColumn('access_token_se', 'text', [
                 'default' => null,
                 'limit' => null,
-                'null' => true,
-            ])
-            ->addColumn('user_type', 'integer', [
-                'default' => null,
-                'limit' => 11,
                 'null' => true,
             ])
             ->addColumn('created', 'datetime', [
