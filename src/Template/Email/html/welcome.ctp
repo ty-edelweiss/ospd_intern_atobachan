@@ -13,8 +13,9 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$content = explode("\n", $content);
+$prefix = 'あなたのお孫さんから@おばあちゃんへの登録が申請されました。下のアドレスを開いてください。';
+$suffix = '何かあればこちらにご連絡下さい -> xxxx-xxxx-xxxx';
 
-foreach ($content as $line) :
-    echo '<p> ' . $line . "</p>\n";
-endforeach;
+echo $this->Text->autoParagraph($prefix);
+echo $this->Text->autoLink($content);
+echo $this->Text->autoParagraph($suffix);
