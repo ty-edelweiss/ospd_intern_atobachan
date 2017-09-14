@@ -43,6 +43,13 @@ class MailController extends AppController
         $this->render();
     }
 
+    public function test() {
+        $stats = 'success';
+        $this->set('stats', $stats);
+
+        $this->render('complete');
+    }
+
     private function __sendMail($column_name, $screen_name) {
         $this->loadModel('Users');
         $email = new Email('default');
