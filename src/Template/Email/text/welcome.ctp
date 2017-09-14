@@ -15,4 +15,7 @@
 
 $prefix = 'あなたのお孫さんから@おばあちゃんへの登録が申請されました。下のアドレスを開いてください。';
 $suffix = '何かあればこちらにご連絡下さい -> xxxx-xxxx-xxxx';
-echo $prefix . $content . $suffix;
+
+echo $prefix . "\n";
+echo $content . "\n";
+echo $suffix;
