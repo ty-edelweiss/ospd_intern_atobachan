@@ -52,8 +52,12 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('screen_name')
-            ->allowEmpty('screen_name');
+            ->scalar('young_screen_name')
+            ->allowEmpty('young_screen_name');
+
+        $validator
+            ->scalar('old_screen_name')
+            ->allowEmpty('old_screen_name');
 
         $validator
             ->email('email')
@@ -66,10 +70,6 @@ class UsersTable extends Table
         $validator
             ->scalar('access_token_se')
             ->allowEmpty('access_token_se');
-
-        $validator
-            ->integer('user_type')
-            ->allowEmpty('user_type');
 
         return $validator;
     }
