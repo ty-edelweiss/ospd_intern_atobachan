@@ -28,10 +28,10 @@ class MailController extends AppController
         $this->loadModel('Users');
         $email = new Email('default');
         $user = $this->Users->find('all')
-            ->where(['user_type'=>0])
+            ->where(['screen_name'=>$this->request->getQuery('screen_name')])
             ->first();
         // $target = $this->request->getQuery('email');
-            $target = $user['email'];
+        $target = $user['email'];
         $email->setTransport('gmail')
             ->setFrom([ 'you@localhost' => '@obachan' ])
             ->setTo($target)
